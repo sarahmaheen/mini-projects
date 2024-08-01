@@ -27,39 +27,163 @@
 
 
 /* for overlay effects 1 card */
-.card-container {
-    perspective: 1000px; /* Required for 3D effect */
+/* #card-container-flip{
+    perspective: 1000px;
 }
-
-#3d-flip {
-    position: relative;
-    width: 250px;
-    height: 400px;
-    transform-style: preserve-3d;
-    transition: transform 0.6s;
-}
-
-#3d-flip .card-front,
-#3d-flip .card-back {
+#card-inner{
     position: absolute;
     width: 100%;
     height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+
+#card-container-flip:hover #card-inner{
+    transform: rotateY(-180deg);
+}
+
+.card-front, .card-back{
+    width: 100%;
+    height: 100%;
+    position:absolute;
     backface-visibility: hidden;
+    
+}
+.card-back{
+    transform:  rotateY(180deg) ;
+} */
+
+
+
+
+
+
+
+
+
+
+
+#card-container-flip {
+    width: 250px;
+   
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,1.0);
+    /* margin: 30px;
+    padding: 10px; */
+    /* background: cover   ; */
+    perspective: 1000px;
+    width: 300px;  /* Adjust the width as needed */
+    height: 230px; /* Adjust the height as needed */
+    position: relative;
+    background-color:brown ;
+}
+
+#card-inner {
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+#card-container-flip:hover #card-inner {
+    transform: rotateY(-180deg);
+}
+
+.card-front, .card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+}
+
+
+/* for overlay  */
+#overlay-img{
+    transition: transform 0.5s;
+}
+.overlay-info{
+    height: 0;
+    /* width: 100%; */
+    background: linear-gradient(transparent, #1c1c1c 58%);
+    border-radius: 10px;
+    /* position: absolute; */
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    text-align: center;
+    font-size: 14px;
+    color: aqua;
+    transition: height  0.5s;
+}
+#overlay-img:hover img{
+    transform: scale(1.2);
 }
 
-#3d-flip .card-front {
-    background-color: #2980b9;
+#overlay-img:hover .overlay-info{
+    height: 100%;
 }
 
-#3d-flip .card-back {
-    background-color: #c0392b;
-    transform: rotateY(180deg);
+
+/* image change hover effect  */
+/* #image-change-hover:hover{
+    background-color: bisque;
+    transition: transform 0.3s;
+} */
+
+
+
+
+
+
+/* Initial state */
+
+#image-change-hover {
+    position: relative;
+    overflow: hidden; /* Hide overflowing image parts */
+   
 }
 
-.card-container:hover #3d-flip {
-    transform: rotateY(180deg);
+
+#image-change-hover img {
+    /* transition: opacity 0.3s ease-in-out; */
+
+
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    width: 100%; /* Ensure the image takes up the full width of the card */
+    height: 100%; /* Ensure the image takes up the full height of the card */
+    object-fit: cover; 
+}
+
+/* Hover state */
+#image-change-hover:hover img {
+    content: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBl79vaDzBtF-jCRElZIkzwTp0xlX5kBXhnA&s);
+   
+}
+#image-change-hover:hover {
+    transform: scale(1.2);
+    background:#7fd7c7;
+}
+
+/* Hover state image */
+#image-change-hover:hover::after {
+    /* content: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBl79vaDzBtF-jCRElZIkzwTp0xlX5kBXhnA&s'); */
+    
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.1s ease-in-out;
+   ;
 }
